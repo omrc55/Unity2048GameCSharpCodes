@@ -2,23 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KendiniPatlat : MonoBehaviour
+public class ExplodeYourself : MonoBehaviour
 {
-    Yonetim yonetim;
-    bool silKomutu;
+    Manager manager;
+    bool delete;
 
 
     void Start()
     {
-        yonetim = GetComponent<Kare>().yonetim.GetComponent<Yonetim>();
+        manager = GetComponent<Square>().manager.GetComponent<Manager>();
     }
 
 
     void Update()
     {
-        if (silKomutu)
+        if (delete)
         {
-            transform.GetComponent<Kare>().enabled = false;
+            transform.GetComponent<Square>().enabled = false;
             transform.localScale = Vector3.Lerp(transform.localScale, new Vector3(3, 3, 3), Time.deltaTime * 5);
         }
 
@@ -29,9 +29,9 @@ public class KendiniPatlat : MonoBehaviour
     }
 
 
-    public void KareyiSil()
+    public void DeleteSquare()
     {
-        yonetim.Cekic(true);
-        silKomutu = true;
+        manager.Hammer(true);
+        delete = true;
     }
 }

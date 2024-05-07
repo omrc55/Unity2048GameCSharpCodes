@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ArtiDegerKodu : MonoBehaviour
+public class PlusValueCode : MonoBehaviour
 {
-    public GameObject yonetim;
-    public GameObject puanYazi;
-    public bool artiTip;
-    public bool reklamGoster;
+    public GameObject manager;
+    public GameObject pointText;
+    public bool plus;
+    public bool showAd;
 
 
     void Start()
     {
-        if (artiTip)
+        if (plus)
         {
             gameObject.transform.GetChild(0).transform.position = gameObject.transform.GetChild(1).transform.position;
         }
@@ -21,37 +21,37 @@ public class ArtiDegerKodu : MonoBehaviour
 
     void Update()
     {
-        if (artiTip)
+        if (plus)
         {
             //gameObject.transform.GetChild(0).transform.position = Vector3.Lerp(gameObject.transform.GetChild(0).transform.position, gameObject.transform.GetChild(2).transform.position, Time.deltaTime * 3);
-            gameObject.transform.GetChild(0).transform.position = Vector3.MoveTowards(gameObject.transform.GetChild(0).transform.position, puanYazi.transform.position, Time.deltaTime * 3);
+            gameObject.transform.GetChild(0).transform.position = Vector3.MoveTowards(gameObject.transform.GetChild(0).transform.position, pointText.transform.position, Time.deltaTime * 3);
 
             //if ((gameObject.transform.GetChild(0).transform.position - gameObject.transform.GetChild(2).transform.position).magnitude < 0.1f)
-            if ((gameObject.transform.GetChild(0).transform.position - puanYazi.transform.position).magnitude < 0.1f)
+            if ((gameObject.transform.GetChild(0).transform.position - pointText.transform.position).magnitude < 0.1f)
             {
-                if (reklamGoster)
+                if (showAd)
                 {
-                    yonetim.GetComponent<Yonetim>().ReklamCagir();
+                    manager.GetComponent<Manager>().CallAds();
                 }
 
-                yonetim.GetComponent<Yonetim>().puanAnimIzin = true;
+                manager.GetComponent<Manager>().pointAnimPermission = true;
                 Destroy(gameObject);
             }
         }
         else
         {
             //gameObject.transform.GetChild(0).transform.position = Vector3.Lerp(gameObject.transform.GetChild(0).transform.position, gameObject.transform.GetChild(1).transform.position, Time.deltaTime * 3);
-            gameObject.transform.GetChild(0).transform.position = Vector3.MoveTowards(gameObject.transform.GetChild(0).transform.position, puanYazi.transform.position, Time.deltaTime * 3);
+            gameObject.transform.GetChild(0).transform.position = Vector3.MoveTowards(gameObject.transform.GetChild(0).transform.position, pointText.transform.position, Time.deltaTime * 3);
 
             //if ((gameObject.transform.GetChild(0).transform.position - gameObject.transform.GetChild(1).transform.position).magnitude < 0.1f)
-            if ((gameObject.transform.GetChild(0).transform.position - puanYazi.transform.position).magnitude < 0.1f)
+            if ((gameObject.transform.GetChild(0).transform.position - pointText.transform.position).magnitude < 0.1f)
             {
-                if (reklamGoster)
+                if (showAd)
                 {
-                    yonetim.GetComponent<Yonetim>().ReklamCagir();
+                    manager.GetComponent<Manager>().CallAds();
                 }
 
-                yonetim.GetComponent<Yonetim>().puanAnimIzin = true;
+                manager.GetComponent<Manager>().pointAnimPermission = true;
                 Destroy(gameObject);
             }
         }

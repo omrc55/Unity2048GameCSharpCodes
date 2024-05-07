@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Izgara : MonoBehaviour
+public class Grid : MonoBehaviour
 {
-    public GameObject kare;
+    public GameObject square;
 }
